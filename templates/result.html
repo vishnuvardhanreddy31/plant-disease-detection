@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Plant Identification Results</title>
+  <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #333;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 800px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    table th,
+    table td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      background-color: #f2f2f2;
+      color: #333;
+      font-size: 18px;
+    }
+
+    table td {
+      font-size: 16px;
+      color: #666;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .result-image {
+      max-width: 100%;
+      max-height: 500px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Plant Identification Results</h1>
+  {% if error %}
+  <p style="color: red">{{ error }}</p>
+  {% else %}
+  {% if image %}
+  <img src="{{ image }}" alt="Uploaded Image" style="max-width: 500px;">
+  {% endif %}
+  {% if name %}
+  <h2>Name of disease: {{ name }}</h2>
+  {% endif %}
+  {% if description %}
+  <p>Description of disease: {{ description }}</p>
+  {% endif %}
+  {% if chemical_treatments %}
+  <h3>Chemical treatment:</h3>
+  <ul>
+    {% for treatment in chemical_treatments %}
+    <li>{{ treatment }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if biological_treatments %}
+  <h3>Biological treatment:</h3>
+  <ul>
+    {% for treatment in biological_treatments %}
+    <li>{{ treatment }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if preventive_measures %}
+  <h3>Preventive measures:</h3>
+  <ul>
+    {% for measure in preventive_measures %}
+    <li>{{ measure }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endif %}
+</body>
+
+</html>
